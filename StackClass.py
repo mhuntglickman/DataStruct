@@ -38,7 +38,7 @@ def balanceParen(symbols):
 		symbol = symbols[index]
 		
 
-		# if left paren push it into the stack.
+		# if left paren/open push it into the stack.
 		if symbol == '(':
 			s.push(symbol)
 			
@@ -49,26 +49,18 @@ def balanceParen(symbols):
 				# if the stack was empty then set balanced to False and bounce out of the loop
 				balanced=False
 			else:
+
 				# stack still has items in it therefore pop a paren off and 
 				# bind it to variable.  Send the popped item and the symbol 
 				# in the findMatching method.
-				paren = s.pop()
-				if not findMatching(paren, symbol)
-
+				s.pop()
+                
 		# increment the index position
 		index+=1
 
 
 	return True if balanced and s.isEmpty() else False
 
-
-def findMatching(open, close):
-	opener='([{'
-	closer = ')]}'
-
-	return opener.index[open] == closer.index[close]
-
-		
 
 
 
@@ -87,7 +79,7 @@ print s.size()
 print s.items
 
 
-print '***************checking balanceParen function***************'
+print '**************checking balanceParen function**************'
 print(balanceParen('((()))'))
 print(balanceParen('(()'))
 
