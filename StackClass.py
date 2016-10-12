@@ -24,6 +24,43 @@ class Stacks():
 		return len(self.items)
 
 
+def balanceParen(symbols):
+	
+	# instaniate a stack
+	s=Stacks()
+	
+	balanced = True
+	index=0
+	
+	#for i in range(len(symbols)) and balanced:
+	while index < len(symbols) and balanced:
+		
+		symbol = symbols[index]
+		
+
+		# if left paren push it into the stack.
+		if symbol == '(':
+			s.push(symbol)
+			
+		# anything other than left paren
+		else:
+			# check if there is anything in the stack to match up with right paren
+			if s.isEmpty():
+				# if the stack was empty then set balanced to False and bounce out of the loop
+				balanced=False
+			else:
+				# stack still has items in it therefore pop a paren off
+				s.pop()
+
+		# increment the index position
+		index+=1
+
+
+	return True if balanced and s.isEmpty() else False
+
+		
+
+
 
 s=Stacks()
 s.push('one')
@@ -38,3 +75,11 @@ print s.pop()
 print s.peek()
 print s.size()
 print s.items
+
+
+print '***************checking balanceParen function***************'
+print(balanceParen('((()))'))
+print(balanceParen('(()'))
+
+
+
