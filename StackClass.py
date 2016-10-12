@@ -49,14 +49,24 @@ def balanceParen(symbols):
 				# if the stack was empty then set balanced to False and bounce out of the loop
 				balanced=False
 			else:
-				# stack still has items in it therefore pop a paren off
-				s.pop()
+				# stack still has items in it therefore pop a paren off and 
+				# bind it to variable.  Send the popped item and the symbol 
+				# in the findMatching method.
+				paren = s.pop()
+				if not findMatching(paren, symbol)
 
 		# increment the index position
 		index+=1
 
 
 	return True if balanced and s.isEmpty() else False
+
+
+def findMatching(open, close):
+	opener='([{'
+	closer = ')]}'
+
+	return opener.index[open] == closer.index[close]
 
 		
 
