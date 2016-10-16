@@ -22,7 +22,7 @@ class Stacks():
 
 	def size(self):
 		return len(self.items)
-
+ 
 
 def balanceParen(symbols):
 	
@@ -35,32 +35,32 @@ def balanceParen(symbols):
 	#for i in range(len(symbols)) and balanced:
 	while index < len(symbols) and balanced:
 		
-		symbol = symbols[index]
-		
-
-		# if left paren/open push it into the stack.
-		if symbol == '(':
-			s.push(symbol)
-			
-		# anything other than left paren
-		else:
-			# check if there is anything in the stack to match up with right paren
-			if s.isEmpty():
-				# if the stack was empty then set balanced to False and bounce out of the loop
-				balanced=False
+		while index < len(symbols) and balanced:
+			symbol = symbols[index]
+	        
+			if symbol in "([{":
+				s.push(symbol)
+	        
 			else:
-
-				# stack still has items in it therefore pop a paren off and 
-				# bind it to variable.  Send the popped item and the symbol 
-				# in the findMatching method.
-				s.pop()
-                
-		# increment the index position
-		index+=1
+				if s.isEmpty():
+					balanced = False
+				else:
+					top = s.pop()
+					if not subChecker(top,symbol):
+						balanced = False
+			# increment the index position
+			index+=1
 
 
 	return True if balanced and s.isEmpty() else False
 
+def subChecker(open, close):
+
+	opens = '([{'
+	closers = ')]}'
+
+	return opens.index(open) == closers.index(close)
+	
 
 
 
@@ -80,8 +80,13 @@ print s.items
 
 
 print '**************checking balanceParen function**************'
-print(balanceParen('((()))'))
-print(balanceParen('(()'))
 
+print(balanceParen( '((()))' ))
+print(balanceParen( '(()' ))
+
+print '**************checking Extended balanceParen function**************'
+
+print(balanceParen( '{{([][])}()}' ))
+print(balanceParen( '[{()]' ))
 
 
