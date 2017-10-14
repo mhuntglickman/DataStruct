@@ -2,6 +2,8 @@
 # allow me to append to the end and pop from the end which is a 
 # faster run time O(1) then appending to front of list and popping 
 # from the front O(n)
+# Adding some testing information and using this as a push agent for a Jenkins job
+
 
 class Stacks():
 
